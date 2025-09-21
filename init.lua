@@ -1,10 +1,3 @@
-vim.cmd("set expandtab")
-vim.cmd("set tabstop=2")
-vim.cmd("set softtabstop=2")
-vim.cmd("set shiftwidth=2")
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -12,7 +5,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
+      { out,                            "WarningMsg" },
       { "\nPress any key to exit..." },
     }, true, {})
     vim.fn.getchar()
@@ -21,13 +14,15 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Save all & quit with Ctrl+Q (normal/insert/visual)
+vim.keymap.set({ "n", "i", "v" }, "<C-s>", function()
+  vim.cmd("wa")
+end, { silent = true, desc = "Savel all" })
+
 vim.keymap.set({ "n", "i", "v" }, "<C-q>", function()
   vim.cmd("wqa")
 end, { silent = true, desc = "Write all & quit" })
 
+vim.opt.number = true
 
+require("vim-settings")
 require("lazy").setup("plugins")
-
-
-

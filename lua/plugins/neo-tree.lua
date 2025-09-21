@@ -8,7 +8,7 @@ return {
   },
   lazy = false,
   opts = {
-    window = { position = "left", width = 30 },
+    window = { position = "left", },
     filesystem = { hijack_netrw_behavior = "open_default" },
   },
   config = function(_, opts)

@@ -25,13 +25,13 @@ This repository contains my personal Neovim configuration files. It is tailored 
 
 ## Requirements
 
-- [Neovim](https://neovim.io/) (v0.8+ recommended)
+- [Neovim](https://neovim.io/) (v0.11+)
 - [git](https://git-scm.com/)
 - [Node.js](https://nodejs.org/) (for some LSPs and plugins)
 
 ## Customization
 
-Feel free to modify the configuration files to suit your workflow. Check the `lua/` directory for settings and plugin configurations.
+Feel free to modify the configuration files to suit your your needs. Check the `lua/` directory for settings and plugin configurations.
 
 ## License
 

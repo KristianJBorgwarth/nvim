@@ -21,10 +21,13 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("plugins")
+-- Save all & quit with Ctrl+Q (normal/insert/visual)
+vim.keymap.set({ "n", "i", "v" }, "<C-q>", function()
+  vim.cmd("wqa")
+end, { silent = true, desc = "Write all & quit" })
 
-vim.keymap.set('n', '<leader>2', ':Neotree toggle<CR>', {desc = "Toggle file explore"})
-vim.keymap.set('n', '<leader>1', ':Neotree filesystem reveal right<CR>')
+
+require("lazy").setup("plugins")
 
 
 

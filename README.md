@@ -33,10 +33,6 @@ This repository contains my personal Neovim configuration files. It is tailored 
 
 Feel free to modify the configuration files to suit your your needs. Check the `lua/` directory for settings and plugin configurations.
 
-## License
-
-MIT
-
 ---
 
 Happy coding

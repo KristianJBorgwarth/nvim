@@ -6,7 +6,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "neovim/nvim-lspconfig" },
     opts = {
-      ensure_installed = { "lua_ls", "ts_ls" },
+      ensure_installed = { "lua_ls", "ts_ls", "omnisharp"},
       handlers = {
         function(server)
           local cfg = vim.lsp.config(server)

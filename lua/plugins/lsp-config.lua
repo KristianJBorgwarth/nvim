@@ -13,12 +13,6 @@ return {
 				end,
 			},
 		},
-		["omnisharp"] = function()
-			require("lspconfig").omnisharp.setup({
-				root_dir = require("lspconfig.util").root_pattern("*.sln", "*.csproj", ".git"),
-				cmd = { "omnisharp" },
-			})
-		end,
 		config = function(_, opts)
 			require("mason-lspconfig").setup(opts)
 			vim.api.nvim_create_autocmd("LspAttach", {

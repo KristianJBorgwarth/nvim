@@ -1,4 +1,3 @@
-
 return {
   { "neovim/nvim-lspconfig" },
   { "williamboman/mason.nvim", build = ":MasonUpdate", config = true },
@@ -24,7 +23,7 @@ return {
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, o)
         vim.keymap.set("n", "gi", vim.lsp.buf.implementation, o)
         vim.keymap.set("n", "gr", vim.lsp.buf.references, o)
-        vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, o)
+        vim.keymap.set({ "n", "v" }, "<A-enter>", vim.lsp.buf.code_action, o)
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, o)
         vim.keymap.set({ "n", "v" }, "<leader>f", function() vim.lsp.buf.format({ async = false }) end, o)
       end })

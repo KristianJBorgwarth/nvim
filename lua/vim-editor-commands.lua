@@ -13,3 +13,14 @@ map("i", "<A-l>", "<C-o><C-w>l", { desc = "Move to right split" })
 -- close current window
 map({ "n", "v" }, "<A-q>", "<C-w>q", { desc = "Close current split" })
 map("i", "<A-q>", "<C-o><C-w>q", { desc = "Close current split" })
+
+-- git commands
+map("n", "<leader>ga", function()
+  local res = vim.system({ "git", "add", "-A" }):wait()
+  if res.code == 0 then
+    print("Staged changes")
+  else
+    print("git add failed: " .. (res.stderr or ""))
+  end
+end, { desc = "git add/stage", silent = true })
+

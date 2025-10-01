@@ -3,6 +3,8 @@ return {
 	dependencies = {
 		"nvim-neotest/nvim-nio",
 		"rcarriga/nvim-dap-ui",
+		"nvim-neotest/neotest",
+		"Issafalcon/neotest-dotnet",
 	},
 	config = function()
 		local dap = require("dap")
@@ -25,7 +27,7 @@ return {
 
 		local netcoredbg = vim.fn.exepath("netcoredbg")
 		if netcoredbg == "" then
-			netcoredbg = vim.fn.stdpath("data") .. "/mason/packages/netcoredbg/netcoredbg/netcoredbg"
+			netcoredbg = vim.fn.stdpath("data") .. "/mason/packages/netcoredbg/netcoredbg"
 		end
 
 		dap.adapters.coreclr = {
@@ -34,15 +36,42 @@ return {
 			args = { "--interpreter=vscode" },
 		}
 
+		local dll_picker = require("csharp.dll_picker")
 		dap.configurations.cs = {
 			{
 				type = "coreclr",
 				name = "launch - netcoredbg",
 				request = "launch",
 				program = function()
-          return vim.fn.input("Path to dll", vim.fn.getcwd() .. '/bin/Debug/', 'file')
+					return dll_picker.select_debug_dll({
+						depth = 6,
+					})
 				end,
+				cwd = function()
+					return dll_picker.last_project_dir()
+				end,
+				env = {
+					ASPNETCORE_ENVIRONMENT = "Development",
+					DOTNET_ENVIRONMENT = "Development",
+				},
 			},
 		}
+
+		require("neotest").setup({
+			adapters = {
+				require("neotest-dotnet")({
+          discover_root = "./src",
+					dap = { justMyCode = false },
+				}),
+			},
+		})
+
+		vim.keymap.set("n", "<leader>t", function()
+			require("neotest").run.run()
+		end)
+
+		vim.keymap.set("n", "<A-8>", function()
+			require("neotest").summary.toggle()
+		end)
 	end,
 }

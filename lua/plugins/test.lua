@@ -6,6 +6,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		"antoinemadec/FixCursorHold.nvim",
 		"nvim-treesitter/nvim-treesitter",
+    "mfussenegger/nvim-dap",
 	},
 	config = function()
 		require("neotest").setup({
@@ -20,8 +21,11 @@ return {
 			},
 			adapters = {
 				require("neotest-dotnet")({
-					args = { "--no-restore" },
-					solution = "solution",
+					dap = {
+						adapter_name = "coreclr",
+            justMyCode = false,
+					},
+          discovery_root = "solution"
 				}),
 			},
 		})

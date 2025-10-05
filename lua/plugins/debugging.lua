@@ -60,7 +60,7 @@ return {
 		require("neotest").setup({
 			adapters = {
 				require("neotest-dotnet")({
-          discover_root = "./src",
+          discover_root = "solution",
 					dap = { justMyCode = false },
 				}),
 			},

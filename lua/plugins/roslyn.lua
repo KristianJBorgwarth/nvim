@@ -1,7 +1,7 @@
 return {
 	"seblyng/roslyn.nvim",
 	---@module 'roslyn.config'
----@diagnostic disable-next-line: undefined-doc-name
+  ---@diagnostic disable-next-line: undefined-doc-name
 	---@type RoslynNvimConfig
 	ft = { "cs", "razor" },
 	opts = { -- leave empty to use defaults
@@ -56,7 +56,6 @@ return {
 		vim.lsp.enable("roslyn")
 	end,
 	init = function()
-		-- We add the Razor file types before the plugin loads.
 		vim.filetype.add({
 			extension = {
 				razor = "razor",

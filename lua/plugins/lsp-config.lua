@@ -7,7 +7,7 @@ return {
 			require("mason").setup({
 				registries = {
 					"github:mason-org/mason-registry",
-					"github:Crashdummyy/mason-registry", -- double 'y' here
+					"github:Crashdummyy/mason-registry",
 				},
 			})
 		end,

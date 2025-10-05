@@ -56,22 +56,5 @@ return {
 				},
 			},
 		}
-
-		require("neotest").setup({
-			adapters = {
-				require("neotest-dotnet")({
-          discover_root = "solution",
-					dap = { justMyCode = false },
-				}),
-			},
-		})
-
-		vim.keymap.set("n", "<leader>t", function()
-			require("neotest").run.run()
-		end)
-
-		vim.keymap.set("n", "<A-8>", function()
-			require("neotest").summary.toggle()
-		end)
 	end,
 }

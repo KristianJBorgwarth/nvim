@@ -6,7 +6,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		"antoinemadec/FixCursorHold.nvim",
 		"nvim-treesitter/nvim-treesitter",
-    "mfussenegger/nvim-dap",
+		"mfussenegger/nvim-dap",
 	},
 	config = function()
 		require("neotest").setup({
@@ -15,6 +15,7 @@ return {
 			},
 			status = {
 				virtual_text = true,
+				signs = true,
 			},
 			output = {
 				open_on_run = true,
@@ -23,9 +24,13 @@ return {
 				require("neotest-dotnet")({
 					dap = {
 						adapter_name = "coreclr",
-            justMyCode = false,
+						justMyCode = false,
 					},
-          discovery_root = "solution"
+					dotnet_additional_args = {
+						"--verbosity detailed",
+            "--configuration", "Debug",
+					},
+					discovery_root = "solution",
 				}),
 			},
 		})
@@ -36,24 +41,17 @@ return {
 			nt.summary.toggle()
 		end, { desc = "Neotest: Toggle summary" })
 
+		vim.keymap.set("n", "<A-7>", function()
+			nt.output_panel.toggle()
+		end, { desc = "Neotest: Toggle output panel" })
+
 		vim.keymap.set("n", "<leader>tA", function()
 			nt.run.run({ suite = true })
 		end, { desc = "Neotest: Run ALL tests" })
 
 		vim.keymap.set("n", "<leader>td", function()
-			require("neotest").run.run({ strategy = "dap" })
+			nt.run.run({ strategy = "dap" })
 		end, { desc = "Neotest: Debug nearest test" })
 
-		vim.api.nvim_create_user_command("TestExplorer", function()
-			nt.summary.toggle()
-		end, {})
-
-		vim.api.nvim_create_user_command("TestRunAll", function()
-			nt.run.run({ suite = true })
-		end, {})
-
-		vim.api.nvim_create_user_command("TestDebugAll", function()
-			nt.run.run({ suite = true, strategy = "dap" })
-		end, {})
-	end,
+		end,
 }

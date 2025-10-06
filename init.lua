@@ -14,14 +14,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.keymap.set({ "n", "i", "v" }, "<C-s>", function()
-	vim.cmd("silent! wa")
-end, { silent = true, desc = "Savel all" })
-
-vim.keymap.set({ "n", "i", "v" }, "<C-q>", function()
-	vim.cmd("silent! wqa")
-end, { silent = true, desc = "Write all & quit" })
-
 require("vim-editor-commands")
 require("vim-settings")
 require("lazy").setup("plugins")

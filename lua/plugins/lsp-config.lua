@@ -16,13 +16,14 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = { "neovim/nvim-lspconfig" },
 		opts = {},
-		ensure_installed = { "lua_ls", "ts_ls", },
-			config = function(_, opts)
+		ensure_installed = { "lua_ls", "ts_ls" },
+		config = function(_, opts)
 			require("mason-lspconfig").setup(opts)
 			vim.api.nvim_create_autocmd("LspAttach", {
 				callback = function(ev)
 					local b = ev.buf
 					local o = { buffer = b, silent = true }
+					vim.keymap.set("n", "<leader>e", vim.diagnostic.goto_next, o)
 					vim.keymap.set("n", "K", vim.lsp.buf.hover, o)
 					vim.keymap.set("n", "gd", vim.lsp.buf.definition, o)
 					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, o)

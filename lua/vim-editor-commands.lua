@@ -24,3 +24,4 @@ vim.keymap.set({ "n", "i", "v" }, "<C-s>", function()
 end, { silent = true, desc = "Savel all" })
 
 
+

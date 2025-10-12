@@ -6,7 +6,7 @@ vim.opt.shiftwidth = 2
 
 -- C# tabs: 4 spaces
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "cs",
+  pattern ={ "cs", "typescript", "javascript", "typescriptreact", "javascriptreact" }, 
   callback = function()
     vim.bo.expandtab = true
     vim.bo.tabstop = 4

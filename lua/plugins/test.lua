@@ -46,7 +46,7 @@ return {
 				require("neotest-vstest")({
 					args = { "-l:console;verbosity=minimal", "--nologo" },
 					dap_settings = {
-						type = "netcoredbg",
+						type = "coreclr",
 					},
 				}),
 			},

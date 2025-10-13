@@ -17,6 +17,12 @@ vim.opt.rtp:prepend(lazypath)
 vim.opt.clipboard=unnamedplus
 
 
+vim.opt.wrap=true
+vim.opt.linebreak=true
+vim.opt.breakindent=true
+vim.opt.showbreak="↪ "
+vim.opt.breakat = [[ ^I!@*-+;:,./?([{)]}]]
+
 require("vim-editor-commands")
 require("vim-settings")
 require("lazy").setup("plugins")

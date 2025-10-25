@@ -16,7 +16,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = { "neovim/nvim-lspconfig" },
 		opts = {},
-		ensure_installed = { "lua_ls", "ts_ls" },
+		ensure_installed = { "lua_ls", "ts_ls", "bashls" },
 		config = function(_, opts)
 			require("mason-lspconfig").setup(opts)
 			vim.api.nvim_create_autocmd("LspAttach", {

@@ -1,6 +1,6 @@
 # Neovim Configuration
 
-This repository contains my personal Neovim configuration files. It is tailored to my preferences, but has been kept fairly standard.
+This repository contains my personal Neovim configuration files. It is fairly simple and still a work in progress. It is tailored towards my work and hobby projects, which mainly revolve around the use of C# and backend development, which the configuration reflects.
 
 ## Features
 

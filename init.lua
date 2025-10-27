@@ -20,8 +20,8 @@ vim.opt.breakindent=true
 vim.opt.showbreak="↪ "
 vim.opt.breakat = [[ ^I!@*-+;:,./?([{)]}]]
 
-require("vim-clipboard-commands")
-require("vim-editor-commands")
+require("keybindings.vim-clipboard")
+require("keybindings.vim-editor")
+require("keybindings.vim-dotnet")
 require("vim-settings")
 require("lazy").setup("plugins")
-require("vim-dotnet-commands")

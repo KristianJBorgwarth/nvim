@@ -19,7 +19,7 @@ map({ "n", "v" }, "<A-q>", "<C-w>q", { desc = "Close current split" })
 map("i", "<A-q>", "<C-o><C-w>q", { desc = "Close current split" })
 
 -- save all
-vim.keymap.set({ "n", "i", "v" }, "<C-s>", function()
+map({ "n", "i", "v" }, "<C-s>", function()
 	vim.cmd("silent! wa")
 end, { silent = true, desc = "Savel all" })
 

@@ -23,5 +23,3 @@ vim.keymap.set({ "n", "i", "v" }, "<C-s>", function()
 	vim.cmd("silent! wa")
 end, { silent = true, desc = "Savel all" })
 
-
-

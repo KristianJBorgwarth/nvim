@@ -12,17 +12,15 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 		os.exit(1)
 	end
 end
+
 vim.opt.rtp:prepend(lazypath)
-
-vim.opt.clipboard=unnamedplus
-
-
 vim.opt.wrap=true
 vim.opt.linebreak=true
 vim.opt.breakindent=true
 vim.opt.showbreak="↪ "
 vim.opt.breakat = [[ ^I!@*-+;:,./?([{)]}]]
 
+require("vim-clipboard-commands")
 require("vim-editor-commands")
 require("vim-settings")
 require("lazy").setup("plugins")

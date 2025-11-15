@@ -23,6 +23,7 @@ return {
 				bright_magenta = "#ff92df",
 				bright_cyan = "#a4ffff",
 				bright_white = "#ffffff",
+        border = "#1e1e2a",
 			},
 			highlight_overrides = {
 				all = function(C)
@@ -39,9 +40,25 @@ return {
 		vim.opt.cursorline = true
 		vim.api.nvim_set_hl(0, "CursorLine", { bg = "#111118" })
 
+
 		vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "#09090d", fg = "#c8c3b9" })
 		vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = "#09090d", fg = "#c8c3b9" })
 		vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", { fg = "#1e1e2a" })
-		vim.api.nvim_set_hl(0, "NeoTreeDirectoryName", { fg = "#bd93f9" }) 
-  end,
+		vim.api.nvim_set_hl(0, "NeoTreeDirectoryName", { fg = "#bd93f9" })
+
+		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#111118", fg = "#f8f8f2" })
+		vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#111118", fg = "#ff79c6" })
+
+    local border = "single"
+		vim.diagnostic.config({
+			float = {
+				border = border,
+				source = "always",
+			},
+		})
+
+		local handlers = vim.lsp.handlers
+		handlers["textDocument/hover"] = vim.lsp.with(handlers.hover, { border = border })
+		handlers["textDocument/signatureHelp"] = vim.lsp.with(handlers.signature_help, { border = border })
+	end,
 }

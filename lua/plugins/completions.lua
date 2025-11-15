@@ -3,9 +3,6 @@ return {
     "hrsh7th/cmp-nvim-lsp"
   },
   {
-    "github/copilot.vim",
-  },
-  {
     "L3MON4D3/LuaSnip",
     dependencies = {
       "saadparwaiz1/cmp_luasnip",
@@ -36,8 +33,9 @@ return {
           ["<CR>"] = cmp.mapping.confirm({ select = true }),
         }),
         sources = cmp.config.sources({
-          { name = "nvim_lsp" },
-          { name = "luasnip" }, -- For luasnip users.
+          { name = "nvim_lsp", priority = 100 },
+          { name = "copilot", priority = 50 },
+          { name = "luasnip", priority = 40 },
         }, {
           { name = "buffer" },
         }),

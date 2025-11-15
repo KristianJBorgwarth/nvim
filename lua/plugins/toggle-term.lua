@@ -15,9 +15,8 @@ return {
 		require("toggleterm").setup(opts)
 
 		vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true, silent = true })
-		----------------------------------------------------------------------
-		-- Dotnet terminals
-		----------------------------------------------------------------------
+
+		-- Dotnet terminals --
 		local Terminal = require("toggleterm.terminal").Terminal
 		local map = vim.keymap.set
 

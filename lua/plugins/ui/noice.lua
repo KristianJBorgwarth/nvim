@@ -1,7 +1,7 @@
 return {
 	{
 		"folke/noice.nvim",
-		event = "VeryLazy",
+		event = { "VeryLazy", "BufReadPre", "BufNewFile" },
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
@@ -16,6 +16,11 @@ return {
 					["vim.lsp.util.stylize_markdown"] = true,
 					["cmp.entry.get_documentation"] = true,
 				},
+			},
+			preview_config = {
+				border = "rounded",
+				style = "minimal",
+				relative = "cursor",
 			},
 			presets = {
 				long_message_to_split = true,

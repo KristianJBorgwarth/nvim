@@ -24,5 +24,4 @@ vim.opt.breakat = [[ ^I!@*-+;:,./?([{)]}]]
 require("vim-settings")
 require("keybindings.vim-clipboard")
 require("keybindings.vim-editor")
-require("keybindings.vim-dotnet")
 require("lazy").setup("plugins")

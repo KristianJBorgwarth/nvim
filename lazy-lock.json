@@ -9,6 +9,7 @@
   "dashboard-nvim": { "branch": "master", "commit": "0775e567b6c0be96d01a61795f7b64c1758262f6" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "dracula": { "branch": "main", "commit": "041d923368d540a1e438989ce8f915628081a56a" },
+  "edgy.nvim": { "branch": "main", "commit": "7e8dedc39abebe40c289b8012cc89b11c69aa7a0" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
   "gitsigns.nvim": { "branch": "main", "commit": "20ad4419564d6e22b189f6738116b38871082332" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
@@ -36,5 +37,6 @@
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "3277ad5f96eb03c9d618c88e24f683e4364e578c" },
   "roslyn.nvim": { "branch": "main", "commit": "14ff65704f2a1658f55646618d6520cf00b3f576" },
   "telescope-ui-select.nvim": { "branch": "master", "commit": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2" },
-  "telescope.nvim": { "branch": "master", "commit": "d90956833d7c27e73c621a61f20b29fdb7122709" }
+  "telescope.nvim": { "branch": "master", "commit": "d90956833d7c27e73c621a61f20b29fdb7122709" },
+  "toggleterm.nvim": { "branch": "main", "commit": "50ea089fc548917cc3cc16b46a8211833b9e3c7c" }
 }

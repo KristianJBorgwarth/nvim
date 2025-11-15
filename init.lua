@@ -14,14 +14,22 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
-vim.opt.wrap=true
-vim.opt.linebreak=true
-vim.opt.breakindent=true
-vim.opt.showbreak="↪ "
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.breakindent = true
+vim.opt.showbreak = "↪ "
 vim.opt.breakat = [[ ^I!@*-+;:,./?([{)]}]]
-
 
 require("vim-settings")
 require("keybindings.vim-clipboard")
 require("keybindings.vim-editor")
-require("lazy").setup("plugins")
+
+require("lazy").setup({
+	spec = {
+		{ import = "plugins.lsp" },
+		{ import = "plugins.ui" },
+		{ import = "plugins.editor" },
+		{ import = "plugins.git" },
+		{ import = "plugins.ai" },
+	},
+})

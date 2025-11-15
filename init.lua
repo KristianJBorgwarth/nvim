@@ -21,14 +21,15 @@ vim.opt.showbreak = "↪ "
 vim.opt.breakat = [[ ^I!@*-+;:,./?([{)]}]]
 
 require("vim-settings")
-require("keybindings.vim-clipboard")
-require("keybindings.vim-editor")
+require("keymaps.vim-clipboard")
+require("keymaps.vim-editor")
 
 require("lazy").setup({
 	spec = {
 		{ import = "plugins.lsp" },
 		{ import = "plugins.ui" },
 		{ import = "plugins.editor" },
+    { import = "plugins.debugger" },
 		{ import = "plugins.git" },
 		{ import = "plugins.ai" },
 	},

@@ -36,7 +36,7 @@ return {
 			args = { "--interpreter=vscode" },
 		}
 
-		local dll_picker = require("csharp.dll_picker")
+		local dll_picker = require("scripts.dll_picker")
 		dap.configurations.cs = {
 			{
 				type = "coreclr",

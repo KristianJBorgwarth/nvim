@@ -9,3 +9,6 @@ map({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from linux system clipboar
 
 -- copy line to system clipboard
 map({ "n" }, "<leader>yy", '"+yy', { desc = "Copy line → clipboard", silent = true })
+
+-- copy entire buffer to system clipboard
+map("n", "<leader>a", '<cmd>%y+<CR>', { desc = "Copy entire buffer → clipboard", silent = true })

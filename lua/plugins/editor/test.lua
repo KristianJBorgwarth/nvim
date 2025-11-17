@@ -22,7 +22,7 @@ return {
 			},
 			discovery = {
 				filter_dir = function(name, rel_path, root)
-					local ignore = { "bin", "obj", "Helpers", ".git", "Setup", "Fixtures", "Authentication" }
+					local ignore = { "bin", "obj", "Helpers", ".git", "Setup", "Fixtures", "Authentication", "Extensions" }
 					for _, n in ipairs(ignore) do
 						if name == n then
 							return false

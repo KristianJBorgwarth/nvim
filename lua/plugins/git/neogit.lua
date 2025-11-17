@@ -24,7 +24,7 @@ return {
 						vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
 					end
 
-					map("n", "<leader>g", function()
+					map("n", "<leader>gb", function()
 						gs.blame_line({ full = true })
 					end, "Git blame (float)")
 

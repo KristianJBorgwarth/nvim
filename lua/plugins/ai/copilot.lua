@@ -1,32 +1,6 @@
 return {
 	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		dependencies = {
-			{
-				"zbirenbaum/copilot-cmp",
-				config = function()
-					require("copilot_cmp").setup()
-				end,
-			},
-		},
-		config = function()
-			require("copilot").setup({
-				panel = { enabled = true },
-				suggestion = { enabled = true },
-				filetypes = {
-					cs = true,
-					fs = true,
-					ts = true,
-					tsx = true,
-					js = true,
-					jsx = true,
-					yaml = true,
-					yml = true,
-				},
-			})
-		end,
+    "github/copilot.vim",
 	},
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",

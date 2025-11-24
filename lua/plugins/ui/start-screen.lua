@@ -10,12 +10,31 @@ return {
 			return vim.fn.fnamemodify(dir, ":t")
 		end
 
-    local dir_name = get_dir_name()
+		local function get_git_branch()
+			-- systemlist returns a table of lines; empty if command fails
+			local head = vim.fn.systemlist("git branch --show-current 2>/dev/null")[1]
+			if head and head ~= "" then
+				return head
+			end
+
+			-- fallback for detached HEAD or older git
+			local ref = vim.fn.systemlist("git rev-parse --abbrev-ref HEAD 2>/dev/null")[1]
+			if ref and ref ~= "" and ref ~= "HEAD" then
+				return ref
+			end
+
+			return nil
+		end
+
+		local branch = get_git_branch()
+		local dir_name = get_dir_name()
 
 		db.setup({
 			theme = "doom",
 			config = {
 				header = {
+					"" .. dir_name,
+          "",
 					"███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗",
 					"████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║",
 					"██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║",
@@ -23,7 +42,7 @@ return {
 					"██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║",
 					"╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝",
 					"",
-          "".. dir_name, 
+          "" .. (branch and (" " .. branch) or ""),
 					"",
 				},
 

@@ -2,7 +2,7 @@ local map = vim.keymap.set
 
 -- split windows
 map("n", "<A-s>", "<cmd>vsplit<CR>", { desc = "Vertical split", silent = true })
-map("n", "<A-d>", "<cmd>split<CR>", { desc = "Horizontal split", silent = true }) 
+map("n", "<A-d>", "<cmd>split<CR>", { desc = "Horizontal split", silent = true })
 
 -- move between split windows
 map({ "n", "v" }, "<A-h>", "<C-w>h", { desc = "Move to left split" })
@@ -22,4 +22,3 @@ map("i", "<A-q>", "<C-o><C-w>q", { desc = "Close current split" })
 map({ "n", "i", "v" }, "<C-s>", function()
 	vim.cmd("silent! wa")
 end, { silent = true, desc = "Savel all" })
-

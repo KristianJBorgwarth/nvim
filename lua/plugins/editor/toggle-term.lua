@@ -16,7 +16,7 @@ return {
 
 		vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true, silent = true })
 
-		-- Dotnet terminals --
+		-- terminals --
 		local Terminal = require("toggleterm.terminal").Terminal
 		local map = vim.keymap.set
 
@@ -33,6 +33,7 @@ return {
 		local dotnet_test = make("dotnet test")
 		local dotnet_clean = make("dotnet clean")
 		local dotnet_restore = make("dotnet restore")
+    local lazygit = make("lazygit")
 
 		map("n", "<leader>b", function()
 			vim.cmd("update")
@@ -53,5 +54,9 @@ return {
 			vim.cmd("update")
 			dotnet_restore:toggle()
 		end, { desc = "dotnet restore" })
+
+    map("n", "<leader>ll", function()
+      lazygit:toggle()
+    end, { desc = "lazygit" })
 	end,
 }

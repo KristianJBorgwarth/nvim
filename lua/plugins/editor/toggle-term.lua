@@ -56,6 +56,7 @@ return {
 		end, { desc = "dotnet restore" })
 
     map("n", "<leader>ll", function()
+      vim.cmd("update")
       lazygit:toggle()
     end, { desc = "lazygit" })
 	end,

@@ -34,6 +34,16 @@ return {
     vim.opt.termguicolors = true
     vim.cmd.colorscheme("dracula")
 
+    -- Custom highlights
+    vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#1e1e2a" })
+    vim.api.nvim_set_hl(0, "VertSplit", { fg = "#1e1e2a" })
+
+    vim.opt.cursorline = true
+    vim.opt.cursorlineopt = "number"
+    vim.opt.fillchars = { eob = " " }
+    vim.api.nvim_set_hl(0, "CursorLine", { bg = "#111118" })
+
+
     -- Make Neovim background transparent (terminal decides color)
     vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
     vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
@@ -51,5 +61,7 @@ return {
     -- Telescope
     vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "NONE" })
     vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "NONE" })
+
+    vim.api.nvim_set_hl(0, "NotifyBackground", { bg = "NONE" })
   end,
 }

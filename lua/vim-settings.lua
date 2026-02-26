@@ -6,7 +6,7 @@ vim.opt.shiftwidth = 2
 
 -- C# tabs: 4 spaces
 vim.api.nvim_create_autocmd("FileType", {
-  pattern ={ "cs", "typescript", "javascript", "typescriptreact", "javascriptreact" }, 
+  pattern = { "cs", "typescript", "javascript", "typescriptreact", "javascriptreact" },
   callback = function()
     vim.bo.expandtab = true
     vim.bo.tabstop = 4
@@ -18,4 +18,4 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.opt.number = true
-
+vim.opt.spelllang = { "en", "da" }

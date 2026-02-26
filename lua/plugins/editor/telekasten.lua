@@ -11,22 +11,22 @@ return {
         extension = ".md",
       })
 
-      -- Core Atlas navigation
+      -- navigation
       vim.keymap.set("n", "zf", tk.find_notes)
       vim.keymap.set("n", "zg", tk.search_notes)
       vim.keymap.set("n", "zn", tk.new_note)
       vim.keymap.set("n", "zl", tk.follow_link)
       vim.keymap.set("n", "zb", tk.show_backlinks)
 
-      -- Auto-apply writing defaults only inside ~/atlas
-      vim.api.nvim_create_autocmd("BufEnter", {
-        callback = function(args)
-          local filepath = vim.api.nvim_buf_get_name(args.buf)
-          if filepath:match(vim.fn.expand("~/atlas")) and filepath:match("%.md$") then
-            vim.opt_local.wrap = true
-            vim.opt_local.linebreak = true
-            vim.opt_local.spell = true
-          end
+      -- line wrapping for .md
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "markdown",
+        callback = function()
+          vim.opt_local.textwidth = 88
+          vim.opt_local.wrap = false
+          vim.opt_local.linebreak = true
+          vim.opt_local.spell = true
+          vim.opt_local.formatoptions:append("t")
         end,
       })
     end,

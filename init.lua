@@ -32,6 +32,6 @@ require("lazy").setup({
     { import = "plugins.debugger" },
     { import = "plugins.git" },
     { import = "plugins.ai" },
-    { import = "plugins.atlas.telekasten" },
+    { import = "plugins.telekasten" },
   },
 })

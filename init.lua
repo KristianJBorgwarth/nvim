@@ -24,6 +24,8 @@ require("vim-settings")
 require("keymaps.vim-clipboard")
 require("keymaps.vim-editor")
 
+require("plugins.commands.axiom").setup()
+
 require("lazy").setup({
   spec = {
     { import = "plugins.lsp" },
@@ -32,6 +34,5 @@ require("lazy").setup({
     { import = "plugins.debugger" },
     { import = "plugins.git" },
     { import = "plugins.ai" },
-    { import = "plugins.telekasten" },
   },
 })

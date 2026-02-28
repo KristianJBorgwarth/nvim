@@ -6,6 +6,7 @@
         "undefined-global",
         "unused-local",
         "redundant-return-value",
-        "undefined-field"
+        "undefined-field",
+        "param-type-mismatch"
     ]
 }

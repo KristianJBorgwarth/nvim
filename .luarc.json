@@ -4,6 +4,8 @@
     ],
     "diagnostics.disable": [
         "undefined-global",
-        "unused-local"
+        "unused-local",
+        "redundant-return-value",
+        "undefined-field"
     ]
 }

@@ -2,7 +2,7 @@ return {
   "nvim-lualine/lualine.nvim",
   config = function()
     local function project_dir()
-      local ok, utils = pcall(require, "scripts.directory-utils")
+      local ok, utils = pcall(require, "scripts.utils")
       if ok and utils.get_project_directory then
         return utils.get_project_directory()
       end

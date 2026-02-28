@@ -30,27 +30,14 @@ return {
         local action_state = require("telescope.actions.state")
 
         local home = vim.fn.expand("~/atlas")
+
         local template_path = home .. "/templates/axiom.md"
+        local utils = require("scripts.utils")
 
-        local title = vim.fn.input("Axiom title: ")
-        if title == "" then return end
+        local title, slug = utils.prompt_title()
+        if not title or not slug then return end
 
-        local slug = title
-            :lower()
-            :gsub("[^a-z0-9 ]", "")
-            :gsub("%s+", "-")
-
-        local dirs = {}
-        for _, path in ipairs(vim.fn.glob(home .. "/*", false, true)) do
-          if vim.fn.isdirectory(path) == 1 then
-            local name = vim.fn.fnamemodify(path, ":t")
-            if name ~= "templates" then
-              table.insert(dirs, name)
-            end
-          end
-        end
-
-        table.sort(dirs)
+        local dirs = utils.get_all_directories(home, { "scratches", ".git", "logs", "templates" })
 
         pickers.new({}, {
           prompt_title = "Select directory",
@@ -61,7 +48,7 @@ return {
               actions.close(prompt_bufnr)
 
               local selection = action_state.get_selected_entry()[1]
-              local full_dir = home .. "/" .. selection
+              local full_dir = selection
               vim.fn.mkdir(full_dir, "p")
 
               local filepath = full_dir .. "/" .. slug .. ".md"
@@ -109,7 +96,6 @@ return {
         end,
       })
     end,
-
   },
   {
     "MeanderingProgrammer/render-markdown.nvim",

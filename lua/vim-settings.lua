@@ -15,6 +15,14 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "help",
+  callback = function()
+    vim.cmd("wincmd L")
+    vim.cmd("vertical resize 100")
+  end
+})
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.opt.number = true

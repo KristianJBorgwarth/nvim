@@ -15,16 +15,11 @@ return {
       -- keymaps
       vim.keymap.set("n", "zd", tk.goto_today)
       vim.keymap.set("n", "zf", tk.find_notes)
-      vim.keymap.set("n", "zg", tk.search_notes)
+      vim.keymap.set("n", "zp", tk.search_notes)
       vim.keymap.set("n", "zn", tk.new_note)
       vim.keymap.set("n", "zl", tk.follow_link)
       vim.keymap.set("n", "zb", tk.show_backlinks)
-      vim.keymap.set("n", "zs", function()
-        tk.new_note({
-          dir = "~/atlas/scratches/",
-          title = os.date("%Y-%m-%d %H:%M:%S"),
-        })
-      end)
+      vim.keymap.set("n", "zg", tk.toggle_todo)
 
       -- telekasten -> md view behavior
       vim.api.nvim_create_autocmd("FileType", {

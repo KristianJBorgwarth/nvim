@@ -19,7 +19,7 @@ return {
       vim.keymap.set("n", "zn", tk.new_note)
       vim.keymap.set("n", "zl", tk.follow_link)
       vim.keymap.set("n", "zb", tk.show_backlinks)
-      vim.keymap.set("n", "zg", tk.toggle_todo)
+      vim.keymap.set("n", "zy", tk.toggle_todo)
 
       -- telekasten -> md view behavior
       vim.api.nvim_create_autocmd("FileType", {

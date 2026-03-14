@@ -8,3 +8,4 @@ lua
 .dll
 deduplication
 CHES
+nvim

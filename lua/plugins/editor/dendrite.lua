@@ -7,6 +7,9 @@ return {
         daily_notes = {
           dir = "/logs",
         },
+        scratch_notes = {
+          dir = "/scratches",
+        },
         templates_dir = "~/atlas/.templates",
       })
 
@@ -15,9 +18,12 @@ return {
       end, { desc = "Create new note" })
 
       vim.keymap.set("n", "<leader>dd", function()
-        require("dendrite").daly_note()
+        require("dendrite").daily_note()
       end, { desc = "Create new daily note" })
 
+      vim.keymap.set("n", "<leader>ds", function()
+        require("dendrite").scratch_note()
+      end, { desc = "Find notes" })
 
     end,
   },

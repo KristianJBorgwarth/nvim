@@ -25,6 +25,10 @@ return {
         require("dendrite").scratch_note()
       end, { desc = "Find notes" })
 
+      vim.keymap.set("n", "<leader>df", function()
+        require("dendrite").new_note("literature", "literature")
+      end, { desc = "Create new literature note" })
+
     end,
   },
   {

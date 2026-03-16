@@ -29,6 +29,10 @@ return {
         require("dendrite").new_note("literature", "literature")
       end, { desc = "Create new literature note" })
 
+      vim.keymap.set("n", "<leader>di", function()
+        require("dendrite").new_note("issue", "issues")
+      end, { desc = "Create new issue note" })
+
     end,
   },
   {

@@ -1,64 +1,68 @@
 return {
-	{
-		"folke/noice.nvim",
-		event = { "VeryLazy", "BufReadPre", "BufNewFile" },
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
-		},
-		opts = {
-			lsp = {
-				progress = { enabled = false },
-				hover = { enabled = true },
-				signature = { enabled = true },
-				override = {
-					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-					["vim.lsp.util.stylize_markdown"] = true,
-					["cmp.entry.get_documentation"] = true,
-				},
-			},
-			preview_config = {
-				border = "rounded",
-				style = "minimal",
-				relative = "cursor",
-			},
-			presets = {
-				long_message_to_split = true,
-				inc_rename = false,
-				lsp_doc_border = true,
-			},
-			views = {
-				hover = {
-					border = {
-						style = "rounded",
-					},
-				},
-				signature = {
-					border = {
-						style = "rounded",
-					},
-				},
-				notify = {
-					replace = true,
-				},
-				cmdline_popup = {
-					position = {
-						col = "50%",
-					},
-					border = {
-						style = "rounded",
-					},
-				},
-			},
-		},
-		keys = {
-			{
-				"<leader>un",
-				function()
-					require("noice").cmd("dismiss")
-				end,
-				desc = "Dismiss Noice notifications",
-			},
-		},
-	},
+  {
+    "folke/noice.nvim",
+    event = { "VeryLazy", "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+    opts = {
+      lsp = {
+        messages = {
+          enabled = true,
+          view = "popup",
+        },
+        progress = { enabled = false },
+        hover = { enabled = true },
+        signature = { enabled = true },
+        override = {
+          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+          ["vim.lsp.util.stylize_markdown"] = true,
+          ["cmp.entry.get_documentation"] = true,
+        },
+      },
+      preview_config = {
+        border = "rounded",
+        style = "minimal",
+        relative = "cursor",
+      },
+      presets = {
+        long_message_to_split = true,
+        inc_rename = false,
+        lsp_doc_border = true,
+      },
+      views = {
+        hover = {
+          border = {
+            style = "rounded",
+          },
+        },
+        signature = {
+          border = {
+            style = "rounded",
+          },
+        },
+        notify = {
+          replace = true,
+        },
+        cmdline_popup = {
+          position = {
+            col = "50%",
+          },
+          border = {
+            style = "rounded",
+          },
+        },
+      },
+    },
+    keys = {
+      {
+        "<leader>un",
+        function()
+          require("noice").cmd("dismiss")
+        end,
+        desc = "Dismiss Noice notifications",
+      },
+    },
+  },
 }

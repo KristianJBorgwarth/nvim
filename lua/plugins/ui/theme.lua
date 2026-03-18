@@ -5,6 +5,11 @@ return {
     priority = 1000,
   },
   {
+    "nyoom-engineering/oxocarbon.nvim",
+    lazy = false,
+    priority = 1000,
+  },
+  {
     "rebelot/kanagawa.nvim",
     lazy = false,
   },
@@ -35,9 +40,6 @@ return {
     priority = 1000,
     config = function()
       require("poimandres").setup({
-        disable_background = true,
-        disable_float_background = true,
-        dim_nc_background = false,
         disable_italics = false,
       })
 
@@ -69,21 +71,18 @@ return {
         enable = true,
 
         extra_groups = {
-          -- core UI
           "NormalFloat",
           "FloatBorder",
           "SignColumn",
           "EndOfBuffer",
           "MsgArea",
 
-          -- telescope
           "TelescopeNormal",
           "TelescopeBorder",
           "TelescopePromptNormal",
           "TelescopeResultsNormal",
           "TelescopePreviewNormal",
 
-          -- menus
           "Pmenu",
           "PmenuSel",
         },
@@ -214,6 +213,10 @@ return {
             name = "nord",
             colorscheme = "nord",
           },
+          {
+            name = "oxocarbon",
+            colorscheme = "oxocarbon"
+          }
         },
       })
     end,

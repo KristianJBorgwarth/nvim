@@ -196,7 +196,10 @@ return {
             colorscheme = "rose-pine",
             before = [[
               require("rose-pine").setup({
-                variant = "moon",
+                variant = "main",
+                styles = {
+                  italic = false,
+                },
               })
             ]]
           },
@@ -206,6 +209,10 @@ return {
             before = [[
               require("rose-pine").setup({
                 variant = "moon",
+                styles = {
+                  italic = false,
+                  bold = false,
+                }
               })
             ]]
           },

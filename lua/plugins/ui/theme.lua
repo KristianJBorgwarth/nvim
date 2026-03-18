@@ -1,69 +1,221 @@
 return {
-  "Mofiqul/dracula.nvim",
-  name = "dracula",
-  priority = 1000,
-  config = function()
-    require("dracula").setup({
-      colors = {
-        bg = "#09090d",
-        fg = "#d2cdc3",
-        selection = "#3a3d4f",
-        comment = "#707aa8",
-        purple = "#c3a0ff",
-        cyan = "#9adcf7",
-        pink = "#ff86cf",
-        green = "#6ee38f",
-        red = "#ff86cf",
-        orange = "#c3a0ff",
-        bright_red = "#ff9bdc",
-        bright_green = "#86f0a6",
-        bright_yellow = "#cdb8ff",
-        bright_blue = "#cdb8ff",
-        bright_magenta = "#ff9bdc",
-        bright_cyan = "#b6f0ff",
-        bright_white = "#f4f4f4",
-        border = "#1e1e2a",
-      },
-      highlight_overrides = {
-        all = function(C)
-          return require("scripts.neotest-color").get(C)
+  {
+    "ellisonleao/gruvbox.nvim",
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    "rebelot/kanagawa.nvim",
+    lazy = false,
+  },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    "shaunsingh/nord.nvim",
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    lazy = false,
+  },
+  {
+    "olivercederborg/poimandres.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("poimandres").setup({
+        disable_background = true,
+        disable_float_background = true,
+        dim_nc_background = false,
+        disable_italics = false,
+      })
+
+      vim.cmd("colorscheme poimandres")
+    end,
+  },
+  {
+    "dgox16/oldworld.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("oldworld").setup({
+        variant = "default",
+        integrations = {
+          telescope = true,
+          gitsigns = true,
+          cmp = true,
+          treesitter = true,
+        },
+      })
+    end,
+  },
+  {
+    "xiyaowong/transparent.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("transparent").setup({
+        enable = true,
+
+        extra_groups = {
+          -- core UI
+          "NormalFloat",
+          "FloatBorder",
+          "SignColumn",
+          "EndOfBuffer",
+          "MsgArea",
+
+          -- telescope
+          "TelescopeNormal",
+          "TelescopeBorder",
+          "TelescopePromptNormal",
+          "TelescopeResultsNormal",
+          "TelescopePreviewNormal",
+
+          -- menus
+          "Pmenu",
+          "PmenuSel",
+        },
+      })
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        callback = function()
+          vim.cmd("TransparentEnable")
         end,
-      },
-    })
-
-    vim.opt.termguicolors = true
-    vim.cmd.colorscheme("dracula")
-
-    -- Custom highlights
-    vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#1e1e2a" })
-    vim.api.nvim_set_hl(0, "VertSplit", { fg = "#1e1e2a" })
-
-    vim.opt.cursorline = true
-    vim.opt.cursorlineopt = "number"
-    vim.opt.fillchars = { eob = " " }
-    vim.api.nvim_set_hl(0, "CursorLine", { bg = "#111118" })
-
-
-    -- Make Neovim background transparent (terminal decides color)
-    vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
-    vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
-    vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
-    vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "NONE" })
-
-    -- Floats (Telescope/LSP/etc.)
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
-    vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })
-
-    -- NeoTree
-    vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "NONE" })
-    vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = "NONE" })
-
-    -- Telescope
-    vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "NONE" })
-    vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "NONE" })
-
-    -- Notify
-    vim.api.nvim_set_hl(0, "NotifyBackground", { bg = "#1e1e1e" })
-
-  end,
+      })
+    end,
+  },
+  {
+    "zaldih/themery.nvim",
+    config = function()
+      require("themery").setup({
+        livePreview = true,
+        themes = {
+          {
+            name = "poimandres",
+            colorscheme = "poimandres",
+          },
+          {
+            name = "catppuccin-mocha",
+            colorscheme = "catppuccin",
+            before = [[
+              require("catppuccin").setup({
+                flavour = "mocha",
+                term_colors = true,
+                integrations = {
+                  treesitter = true,
+                  telescope = true,
+                },
+              })
+            ]]
+          },
+          {
+            name = "catppuccin-macchiato",
+            colorscheme = "catppuccin",
+            before = [[
+              require("catppuccin").setup({
+                flavour = "macchiato",
+              })
+            ]]
+          },
+          {
+            name = "catppuccin-frappe",
+            colorscheme = "catppuccin",
+            before = [[
+              require("catppuccin").setup({
+                flavour = "frappe",
+              })
+            ]]
+          },
+          {
+            name = "tokyonight-night",
+            colorscheme = "tokyonight",
+            before = [[
+              require("tokyonight").setup({
+                style = "night",
+              })
+            ]]
+          },
+          {
+            name = "tokyonight-storm",
+            colorscheme = "tokyonight",
+            before = [[
+              require("tokyonight").setup({
+                style = "storm",
+              })
+            ]]
+          },
+          {
+            name = "tokyonight-moon",
+            colorscheme = "tokyonight",
+            before = [[
+              require("tokyonight").setup({
+                style = "moon",
+              })
+            ]]
+          },
+          {
+            name = "kanagawa-wave",
+            colorscheme = "kanagawa",
+            before = [[
+              require("kanagawa").setup({
+                theme = "wave",
+              })
+            ]]
+          },
+          {
+            name = "kanagawa-dragon",
+            colorscheme = "kanagawa",
+            before = [[
+              require("kanagawa").setup({
+                theme = "dragon",
+              })
+            ]]
+          },
+          {
+            name = "gruvbox-dark",
+            colorscheme = "gruvbox",
+            before = [[
+              require("gruvbox").setup({
+                contrast = "hard",
+              })
+              transparent_mode = true
+            ]]
+          },
+          {
+            name = "rose-pine",
+            colorscheme = "rose-pine",
+            before = [[
+              require("rose-pine").setup({
+                variant = "moon",
+              })
+            ]]
+          },
+          {
+            name = "rose-pine-moon",
+            colorscheme = "rose-pine",
+            before = [[
+              require("rose-pine").setup({
+                variant = "moon",
+              })
+            ]]
+          },
+          {
+            name = "nord",
+            colorscheme = "nord",
+          },
+        },
+      })
+    end,
+  },
 }

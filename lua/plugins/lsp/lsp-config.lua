@@ -17,18 +17,19 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    dependencies = { "neovim/nvim-lspconfig" },
+    dependencies = { "neovim/nvim-lspconfig", "williamboman/mason.nvim" },
     opts = {
-      ensure_installed = { "lua_ls", "ts_ls", "bashls" },
+      ensure_installed = { "lua_ls", "ts_ls", "bashls", "gopls" },
     },
     config = function(_, opts)
       require("mason-lspconfig").setup(opts)
+
       local border = "rounded"
+
       vim.diagnostic.config({
         float = { border = border },
       })
 
-      -- lua_ls setup
       vim.lsp.config("lua_ls", {
         settings = {
           Lua = {
@@ -49,12 +50,37 @@ return {
         },
       })
 
-      -- Global LSP keymaps
+      vim.lsp.config("gopls", {
+        settings = {
+          gopls = {
+            gofumpt = true,
+            staticcheck = true,
+
+            analyses = {
+              unusedparams = true,
+              shadow = true,
+            },
+
+            usePlaceholders = true,
+            completeUnimported = true,
+
+            hints = {
+              assignVariableTypes = true,
+              compositeLiteralFields = true,
+              compositeLiteralTypes = true,
+              constantValues = true,
+              functionTypeParameters = true,
+              parameterNames = true,
+              rangeVariableTypes = true,
+            },
+          },
+        },
+      })
+
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(ev)
           local b = ev.buf
           local o = { buffer = b, silent = true }
-
           vim.keymap.set("n", "<leader>e", function()
             vim.diagnostic.goto_next({
               severity = vim.diagnostic.severity.ERROR,

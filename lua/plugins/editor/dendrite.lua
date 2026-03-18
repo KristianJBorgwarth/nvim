@@ -33,6 +33,9 @@ return {
         require("dendrite").new_note("issue", "issues")
       end, { desc = "Create new issue note" })
 
+      vim.keymap.set("n", "<leader>df", function()
+        require("dendrite").search_frontmatter({"Tags", "Authors", "Created", "Updated", "Source", "Title"})
+      end, { desc = "Create new project note" })
     end,
   },
   {

@@ -20,6 +20,7 @@ vim.opt.breakindent = true
 vim.opt.showbreak = "↪ "
 vim.opt.breakat = [[ ^I!@*-+;:,./?([{)]}]]
 
+
 require("vim-settings")
 require("keymaps.vim-clipboard")
 require("keymaps.vim-editor")

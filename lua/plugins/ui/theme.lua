@@ -87,6 +87,7 @@ return {
           "PmenuSel",
         },
       })
+      vim.opt.fillchars:append({ eob = " " })
       vim.api.nvim_create_autocmd("ColorScheme", {
         callback = function()
           vim.cmd("TransparentEnable")

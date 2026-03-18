@@ -19,7 +19,6 @@ vim.opt.linebreak = true
 vim.opt.breakindent = true
 vim.opt.showbreak = "↪ "
 vim.opt.breakat = [[ ^I!@*-+;:,./?([{)]}]]
-vim.o.winborder = "rounded"
 
 require("vim-settings")
 require("keymaps.vim-clipboard")

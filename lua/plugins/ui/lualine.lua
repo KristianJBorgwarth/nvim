@@ -11,7 +11,7 @@ return {
 
     require("lualine").setup({
       options = {
-        theme = "oxocarbon",
+        theme = "nord",
         globalstatus = true,
       },
       sections = {

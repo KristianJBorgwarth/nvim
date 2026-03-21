@@ -1,6 +1,6 @@
 return {
   {
-    dir = "~/projects/dendrite.nvim",
+    dir = "~/private_projects/dendrite.nvim",
     config = function()
       require("dendrite").setup({
         vault = "~/atlas",

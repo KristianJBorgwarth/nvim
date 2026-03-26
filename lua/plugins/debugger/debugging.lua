@@ -4,12 +4,34 @@ return {
 		"nvim-neotest/nvim-nio",
 		"rcarriga/nvim-dap-ui",
 		"nvim-neotest/neotest",
-		"Issafalcon/neotest-dotnet",
 	},
 	config = function()
 		local dap = require("dap")
 		local dapui = require("dapui")
-		dapui.setup()
+
+		dapui.setup({
+			layouts = {
+				{
+					elements = {
+						{ id = "scopes", size = 0.40 },
+						{ id = "stacks", size = 0.30 },
+						{ id = "watches", size = 0.20 },
+						{ id = "breakpoints", size = 0.10 },
+					},
+					size = 55,
+					position = "right",
+				},
+				{
+					elements = {
+						{ id = "repl", size = 0.5 },
+						{ id = "console", size = 0.5 },
+					},
+					size = 12,
+					position = "bottom",
+				},
+			},
+		})
+
 		dap.listeners.before.attach.dapui_config = function()
 			dapui.open()
 		end
@@ -22,39 +44,12 @@ return {
 		dap.listeners.before.event_exited.dapui_config = function()
 			dapui.close()
 		end
-		vim.keymap.set("n", "<leader>d", dap.toggle_breakpoint, {})
-		vim.keymap.set("n", "<leader>dc", dap.continue, {})
 
-		local netcoredbg = vim.fn.exepath("netcoredbg")
-		if netcoredbg == "" then
-			netcoredbg = vim.fn.stdpath("data") .. "/mason/packages/netcoredbg/netcoredbg"
-		end
-
-		dap.adapters.coreclr = {
-			type = "executable",
-			command = netcoredbg,
-			args = { "--interpreter=vscode" },
-		}
-
-		local dll_picker = require("scripts.dll_picker")
-		dap.configurations.cs = {
-			{
-				type = "coreclr",
-				name = "launch - netcoredbg",
-				request = "launch",
-				program = function()
-					return dll_picker.select_debug_dll({
-						depth = 6,
-					})
-				end,
-				cwd = function()
-					return dll_picker.last_project_dir()
-				end,
-				env = {
-					ASPNETCORE_ENVIRONMENT = "Development",
-					DOTNET_ENVIRONMENT = "Development",
-				},
-			},
-		}
+		vim.keymap.set("n", "<leader>d", dap.toggle_breakpoint, { desc = "DAP: Toggle breakpoint" })
+		vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "DAP: Continue" })
+		vim.keymap.set("n", "<leader>do", dap.step_over, { desc = "DAP: Step over" })
+		vim.keymap.set("n", "<leader>di", dap.step_into, { desc = "DAP: Step into" })
+		vim.keymap.set("n", "<leader>dO", dap.step_out, { desc = "DAP: Step out" })
+		vim.keymap.set("n", "<leader>du", dapui.toggle, { desc = "DAP: Toggle UI" })
 	end,
 }

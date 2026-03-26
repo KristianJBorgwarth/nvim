@@ -120,6 +120,10 @@ return {
             ]]
           },
           {
+            name = "oldworld",
+            colorscheme = "oldworld",
+          },
+          {
             name = "catppuccin-macchiato",
             colorscheme = "catppuccin",
             before = [[

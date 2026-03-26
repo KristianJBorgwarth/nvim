@@ -4,6 +4,7 @@ return {
 		"nsidorenco/neotest-vstest",
 		"nvim-neotest/nvim-nio",
 		"nvim-lua/plenary.nvim",
+		"nvim-neotest/neotest-go",
 		"antoinemadec/FixCursorHold.nvim",
 		"nvim-treesitter/nvim-treesitter",
 		"mfussenegger/nvim-dap",
@@ -22,7 +23,8 @@ return {
 			},
 			discovery = {
 				filter_dir = function(name, rel_path, root)
-					local ignore = { "bin", "obj", "Helpers", ".git", "Setup", "Fixtures", "Authentication", "Extensions" }
+					local ignore =
+						{ "bin", "obj", "Helpers", ".git", "Setup", "Fixtures", "Authentication", "Extensions" }
 					for _, n in ipairs(ignore) do
 						if name == n then
 							return false
@@ -34,12 +36,24 @@ return {
 					if file_path:match("[/\\]Setup[/\\]") then
 						return false
 					end
-					local ends_with = function(pat)
-						return file_path:lower():match(pat) ~= nil
+
+					local lower = file_path:lower()
+
+					-- Go tests
+					if lower:match("_test%.go$") then
+						return true
 					end
-					return ends_with("[Tt]ests?%.cs$")
-						or ends_with("[%.%-][Tt]est[s]?%.cs$")
-						or ends_with("[Ii]ntegration[Tt]ests?%.cs$")
+
+					-- C# tests (your existing logic)
+					if
+						lower:match("[Tt]ests?%.cs$")
+						or lower:match("[%.%-][Tt]est[s]?%.cs$")
+						or lower:match("[Ii]ntegration[Tt]ests?%.cs$")
+					then
+						return true
+					end
+
+					return false
 				end,
 			},
 			adapters = {
@@ -49,6 +63,9 @@ return {
 						type = "coreclr",
 					},
 				}),
+				require("neotest-go")({
+          recursive = true,
+        }),
 			},
 		})
 

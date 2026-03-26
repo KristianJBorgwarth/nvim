@@ -16,6 +16,7 @@ return {
         "c_sharp",
         "markdown",
         "markdown_inline",
+        "go",
       },
       highlight = { enable = true },
       indent = { enable = true },

@@ -6,7 +6,12 @@ return {
     {
       "<leader>xx",
       "<cmd>Trouble diagnostics toggle<cr>",
-      desc = "Diagnostics (workspace)",
+      desc = "All diagnostics (workspace)",
+    },
+    {
+      "<leader>xe",
+      "<cmd>Trouble workspace_errors toggle<cr>",
+      desc = "Errors only (workspace)",
     },
     {
       "<leader>xd",
@@ -34,7 +39,13 @@ return {
       desc = "LSP references/defs/etc",
     },
   },
-
   opts = {
+    modes = {
+      workspace_errors = {
+        mode = "diagnostics",
+        filter = { severity = vim.diagnostic.severity.ERROR },
+        title = "Workspace Errors",
+      },
+    },
   },
 }

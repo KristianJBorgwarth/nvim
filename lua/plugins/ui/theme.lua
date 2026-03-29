@@ -85,6 +85,9 @@ return {
 
           "Pmenu",
           "PmenuSel",
+
+          "TroubleNormal",
+          "TroubleNormalNC",
         },
       })
       vim.opt.fillchars:append({ eob = " " })

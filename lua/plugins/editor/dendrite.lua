@@ -1,6 +1,9 @@
 return {
 	{
 		dir = "~/projects/dendrite.nvim",
+		dependencies = {
+			"hrsh7th/nvim-cmp",
+		},
 		config = function()
 			require("dendrite").setup({
 				vault = "~/atlas",
@@ -38,7 +41,9 @@ return {
 		"MeanderingProgrammer/render-markdown.nvim",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = function()
-			require("render-markdown").setup({})
+			require("render-markdown").setup({
+					injections = { enabled = false },
+				})
 			vim.keymap.set("n", "zm", function()
 				require("render-markdown").toggle()
 			end)

@@ -88,14 +88,33 @@ return {
 
           "TroubleNormal",
           "TroubleNormalNC",
+
+          "NeoTreeNormal",
+          "NeoTreeNormalNC",
+          "NeoTreeEndOfBuffer",
+          "NeoTreeWinSeparator",
         },
       })
       vim.opt.fillchars:append({ eob = " " })
+
+      local function strip_bold_italic()
+        for _, hl_name in ipairs(vim.fn.getcompletion("", "highlight")) do
+          local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = hl_name, link = false })
+          if ok and (hl.bold or hl.italic) then
+            hl.bold = nil
+            hl.italic = nil
+            pcall(vim.api.nvim_set_hl, 0, hl_name, hl)
+          end
+        end
+      end
+
       vim.api.nvim_create_autocmd("ColorScheme", {
         callback = function()
           vim.cmd("TransparentEnable")
+          strip_bold_italic()
         end,
       })
+      strip_bold_italic()
     end,
   },
   {

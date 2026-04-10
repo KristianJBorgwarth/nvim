@@ -21,7 +21,7 @@ return {
 				require("dendrite").daily_note()
 			end, { desc = "Create new daily note" })
 
-			vim.keymap.set("n", "<leader>dt", function()
+			vim.keymap.set("n", "<leader>dr", function()
 				require("dendrite").scratch_note()
 			end, { desc = "Find notes" })
 

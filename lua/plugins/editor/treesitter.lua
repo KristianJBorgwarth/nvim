@@ -1,6 +1,17 @@
 return {
   {
     "HiPhish/rainbow-delimiters.nvim",
+    config = function()
+      require("rainbow-delimiters.setup").setup({
+        strategy = {
+          [""] = function(bufnr)
+            local ok, parser = pcall(vim.treesitter.get_parser, bufnr)
+            if not ok or not parser then return nil end
+            return require("rainbow-delimiters").strategy["global"]
+          end,
+        },
+      })
+    end,
   },
   {
     "nvim-treesitter/nvim-treesitter",

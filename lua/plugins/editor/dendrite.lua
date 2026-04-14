@@ -35,6 +35,10 @@ return {
 			vim.keymap.set("n", "<leader>di", function()
 				require("dendrite").new_note("issue", "issues")
 			end, { desc = "Create new issue note" })
+
+      vim.keymap.set("n", "<leader>gl", function()
+        require("dendrite").goto_link()
+      end, { desc = "Go to link" })
 		end,
 	},
 	{

@@ -11,7 +11,7 @@ return {
 
     require("lualine").setup({
       options = {
-        theme = "nord",
+        theme = "poimandres",
         globalstatus = true,
       },
       sections = {

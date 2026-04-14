@@ -60,6 +60,20 @@ return {
           treesitter = true,
         },
       })
+
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        pattern = "oldworld",
+        callback = function()
+          local border = "#c0bfbc"
+          vim.api.nvim_set_hl(0, "MatchParen",             { underline = true })
+          vim.api.nvim_set_hl(0, "TelescopeBorder",        { fg = border })
+          vim.api.nvim_set_hl(0, "TelescopePromptBorder",  { fg = border })
+          vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { fg = border })
+          vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { fg = border })
+          vim.api.nvim_set_hl(0, "WinSeparator",           { fg = border })
+          vim.api.nvim_set_hl(0, "FloatBorder",            { fg = border })
+        end,
+      })
     end,
   },
   {

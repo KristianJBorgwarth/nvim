@@ -6,7 +6,8 @@ return {
 		},
 		config = function()
 			require("dendrite").setup({
-				vault = "~/atlas",
+        vault_name = "atlas",
+				vault_path = "~/atlas",
 				daily_notes = {
 					dir = "/logs",
 				},

@@ -4,7 +4,7 @@ return {
 
 	opts = {
 		size = 20,
-		open_mapping = [[<C-\>]],
+		open_mapping = [[<C-M-1>]],
 		direction = "float",
 		shade_terminals = false,
 		float_opts = { border = "rounded" },

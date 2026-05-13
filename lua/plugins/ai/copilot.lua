@@ -7,7 +7,7 @@ return {
       vim.api.nvim_create_autocmd("BufEnter", {
         callback = function(args)
           local file = vim.api.nvim_buf_get_name(args.buf)
-          if file:find(atlas, 1, true) == 1 then
+          if file:find(atlas, 1, true) == 1 or file:match("%.md$") then
             vim.b.copilot_enabled = false
           end
         end,

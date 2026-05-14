@@ -111,7 +111,19 @@ return {
       })
       vim.opt.fillchars:append({ eob = " " })
 
+      local md_hl_groups = {
+        "@markup.strong", "@markup.italic",
+        "@markup.strong.markdown_inline", "@markup.italic.markdown_inline",
+        "markdownBold", "markdownItalic", "markdownBoldItalic",
+      }
+
       local function strip_bold_italic()
+        local saved = {}
+        for _, name in ipairs(md_hl_groups) do
+          local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = name, link = false })
+          if ok then saved[name] = hl end
+        end
+
         for _, hl_name in ipairs(vim.fn.getcompletion("", "highlight")) do
           local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = hl_name, link = false })
           if ok and (hl.bold or hl.italic) then
@@ -119,6 +131,10 @@ return {
             hl.italic = nil
             pcall(vim.api.nvim_set_hl, 0, hl_name, hl)
           end
+        end
+
+        for name, hl in pairs(saved) do
+          pcall(vim.api.nvim_set_hl, 0, name, hl)
         end
       end
 

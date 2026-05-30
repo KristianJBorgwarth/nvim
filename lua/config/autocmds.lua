@@ -1,10 +1,3 @@
--- Default tabs: 2 spaces
-vim.opt.expandtab = true
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
-
--- C# tabs: 4 spaces
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "cs", "typescript", "javascript", "typescriptreact", "javascriptreact" },
   callback = function()
@@ -20,10 +13,5 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.cmd("wincmd L")
     vim.cmd("vertical resize 100")
-  end
+  end,
 })
-
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-vim.opt.number = true
-vim.opt.spelllang = { "en", "da" }

@@ -5,7 +5,10 @@ return {
 		null_ls.setup({
 			sources = {
 				null_ls.builtins.formatting.stylua,
-				null_ls.builtins.formatting.prettier,
+				null_ls.builtins.formatting.prettier.with({
+					filetypes = { "css", "javascript", "typescript", "typescriptreact", "javascriptreact", "json" },
+				}),
+				null_ls.builtins.formatting.sql_formatter,
 				null_ls.builtins.diagnostics.kube_linter,
 			},
 		})

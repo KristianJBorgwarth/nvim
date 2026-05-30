@@ -80,18 +80,10 @@ return {
 					local b = ev.buf
 					local o = { buffer = b, silent = true }
 					vim.keymap.set("n", "<leader>e", function()
-						vim.diagnostic.goto_next({
-							severity = vim.diagnostic.severity.ERROR,
-						})
+						vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR })
 					end, o)
 					vim.keymap.set("n", "<leader>ds", function()
-						vim.diagnostic.goto_next({
-							severity = {
-								vim.diagnostic.severity.WARN,
-								vim.diagnostic.severity.INFO,
-								vim.diagnostic.severity.HINT,
-							},
-						})
+						vim.diagnostic.jump({ count = 1, severity = { min = vim.diagnostic.severity.WARN } })
 					end, o)
 					vim.keymap.set("n", "K", vim.lsp.buf.hover, o)
 					vim.keymap.set("n", "gd", vim.lsp.buf.definition, o)

@@ -1,12 +1,12 @@
 return {
 	{
-    dir = "~/projects/dendrite.nvim",
+		"KristianJBorgwarth/dendrite.nvim",
 		dependencies = {
 			"hrsh7th/nvim-cmp",
 		},
 		config = function()
 			require("dendrite").setup({
-        vault_name = "atlas",
+				vault_name = "atlas",
 				vault_path = "~/atlas",
 				daily_notes = {
 					dir = "/logs",
@@ -37,9 +37,9 @@ return {
 				require("dendrite").new_note("issue", "issues")
 			end, { desc = "Create new issue note" })
 
-      vim.keymap.set("n", "<leader>gl", function()
-        require("dendrite").goto_link()
-      end, { desc = "Go to link" })
+			vim.keymap.set("n", "<leader>gl", function()
+				require("dendrite").goto_link()
+			end, { desc = "Go to link" })
 		end,
 	},
 	{
@@ -47,8 +47,8 @@ return {
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = function()
 			require("render-markdown").setup({
-					injections = { enabled = false },
-				})
+				injections = { enabled = false },
+			})
 			vim.keymap.set("n", "zm", function()
 				require("render-markdown").toggle()
 			end)

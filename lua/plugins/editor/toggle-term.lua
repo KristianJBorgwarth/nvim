@@ -14,48 +14,47 @@ return {
 	config = function(_, opts)
 		require("toggleterm").setup(opts)
 
-		-- terminals --
 		local Terminal = require("toggleterm.terminal").Terminal
 		local map = vim.keymap.set
 
-		local function make(cmd)
-			return Terminal:new({
+		local function run(cmd)
+			Terminal:new({
 				cmd = cmd,
 				direction = "float",
 				close_on_exit = false,
 				float_opts = { border = "rounded" },
-			})
+			}):open()
 		end
 
-		local dotnet_build = make("dotnet build --nologo")
-		local dotnet_test = make("dotnet test")
-		local dotnet_clean = make("dotnet clean")
-		local dotnet_restore = make("dotnet restore")
-    local lazygit = make("lazygit")
+		local lazygit = Terminal:new({
+			cmd = "lazygit",
+			direction = "float",
+			close_on_exit = true,
+			float_opts = { border = "rounded" },
+		})
 
 		map("n", "<leader>b", function()
-			vim.cmd("update")
-			dotnet_build:toggle()
-		end, { desc = "dotnet build" })
+			vim.cmd("silent! wa")
+			run("make build")
+		end, { desc = "make build" })
 
 		map("n", "<leader>t", function()
-			vim.cmd("update")
-			dotnet_test:toggle()
-		end, { desc = "dotnet test" })
+			vim.cmd("silent! wa")
+			run("make test")
+		end, { desc = "make test" })
 
 		map("n", "<leader>c", function()
-			vim.cmd("update")
-			dotnet_clean:toggle()
-		end, { desc = "dotnet clean" })
+			vim.cmd("silent! wa")
+			run("make clean")
+		end, { desc = "make clean" })
 
 		map("n", "<leader>r", function()
-			vim.cmd("update")
-			dotnet_restore:toggle()
-		end, { desc = "dotnet restore" })
+			vim.cmd("silent! wa")
+			run("make restore")
+		end, { desc = "make restore" })
 
-    map("n", "<leader>ll", function()
-      vim.cmd("update")
-      lazygit:toggle()
-    end, { desc = "lazygit" })
+		map("n", "<leader>ll", function()
+			lazygit:toggle()
+		end, { desc = "lazygit" })
 	end,
 }

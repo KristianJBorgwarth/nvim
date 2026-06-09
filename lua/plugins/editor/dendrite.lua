@@ -1,6 +1,6 @@
 return {
 	{
-		"KristianJBorgwarth/dendrite.nvim",
+    dir = "~/projects/dendrite/dendrite.nvim",
 		dependencies = {
 			"hrsh7th/nvim-cmp",
 		},
@@ -10,11 +10,13 @@ return {
 				vault_path = "~/atlas",
 				daily_notes = {
 					dir = "/logs",
+          template_name = "daily.md",
 				},
 				scratch_notes = {
 					dir = "/scratches",
+          template_name = "scratch.md",
 				},
-				templates_dir = "~/atlas/.templates",
+				templates_dir = "/.templates",
 			})
 
 			vim.keymap.set("n", "<leader>da", function()

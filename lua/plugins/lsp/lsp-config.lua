@@ -23,6 +23,7 @@ return {
 		},
 		config = function(_, opts)
 			require("mason-lspconfig").setup(opts)
+			vim.lsp.enable({ "lua_ls", "ts_ls", "bashls", "gopls" })
 			local border = "rounded"
 			vim.diagnostic.config({
 				float = { border = border },
@@ -82,10 +83,23 @@ return {
 					vim.keymap.set("n", "<leader>e", function()
 						vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR })
 					end, o)
+					vim.keymap.set("n", "<leader>E", function()
+						vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR })
+					end, o)
 					vim.keymap.set("n", "<leader>ds", function()
 						vim.diagnostic.jump({ count = 1, severity = { min = vim.diagnostic.severity.WARN } })
 					end, o)
-					vim.keymap.set("n", "K", vim.lsp.buf.hover, o)
+					vim.keymap.set("n", "<leader>dS", function()
+						vim.diagnostic.jump({ count = -1, severity = { min = vim.diagnostic.severity.WARN } })
+					end, o)
+					vim.keymap.set("n", "K", function()
+						local diags = vim.diagnostic.get(0, { lnum = vim.api.nvim_win_get_cursor(0)[1] - 1 })
+						if #diags > 0 then
+							vim.diagnostic.open_float()
+						else
+							vim.lsp.buf.hover()
+						end
+					end, o)
 					vim.keymap.set("n", "gd", vim.lsp.buf.definition, o)
 					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, o)
 					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, o)

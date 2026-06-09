@@ -1,6 +1,7 @@
 return {
 	{
 		"KristianJBorgwarth/dendrite.nvim",
+		version = "*",
 		dependencies = {
 			"hrsh7th/nvim-cmp",
 		},

@@ -15,7 +15,7 @@ return {
 				scratch_notes = {
 					dir = "/scratches",
 				},
-				templates_dir = "~/atlas/.templates",
+				templates_dir = "/.templates",
 			})
 
 			vim.keymap.set("n", "<leader>da", function()

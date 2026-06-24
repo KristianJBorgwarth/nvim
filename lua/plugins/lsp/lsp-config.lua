@@ -19,7 +19,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = { "neovim/nvim-lspconfig", "williamboman/mason.nvim" },
 		opts = {
-			ensure_installed = { "lua_ls", "ts_ls", "bashls", "gopls" },
+			ensure_installed = { "lua_ls", "ts_ls", "bashls", "gopls", "clangd", "roslyn" },
 		},
 		config = function(_, opts)
 			require("mason-lspconfig").setup(opts)

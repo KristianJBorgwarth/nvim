@@ -6,6 +6,24 @@ return {
 	config = function()
 		local mason_registry = require("mason-registry")
 
+		-- roslyn.nvim (PR #372) calls the private vim.lsp.diagnostic._refresh on
+		-- workspace/projectInitializationComplete, but that function was removed
+		-- in newer Neovim, so the handler throws. Restore a shim if it's missing.
+		if not vim.lsp.diagnostic._refresh then
+			function vim.lsp.diagnostic._refresh(bufnr, client_id)
+				local clients = vim.lsp.get_clients({
+					bufnr = bufnr,
+					id = client_id,
+					method = "textDocument/diagnostic",
+				})
+				for _, client in ipairs(clients) do
+					client:request("textDocument/diagnostic", {
+						textDocument = vim.lsp.util.make_text_document_params(bufnr),
+					}, nil, bufnr)
+				end
+			end
+		end
+
 		local cmd = {
 			"roslyn",
 			"--stdio",

@@ -27,7 +27,7 @@ require("lazy").setup({
     { import = "plugins.ui" },
     { import = "plugins.editor" },
     { import = "plugins.debugger" },
-    { import = "plugins.git" },
     { import = "plugins.ai" },
+    { import = "plugins.git" },
   },
 })

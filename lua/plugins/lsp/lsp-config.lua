@@ -19,7 +19,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = { "neovim/nvim-lspconfig", "williamboman/mason.nvim" },
 		opts = {
-			ensure_installed = { "lua_ls", "ts_ls", "bashls", "gopls" },
+			ensure_installed = { "lua_ls", "ts_ls", "bashls", "gopls", "clangd" },
 		},
 		config = function(_, opts)
 			require("mason-lspconfig").setup(opts)
@@ -90,10 +90,18 @@ return {
 						vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR })
 					end, o)
 					vim.keymap.set("n", "<leader>ds", function()
-						vim.diagnostic.jump({ count = 1, severity = { min = vim.diagnostic.severity.HINT }, float = true })
+						vim.diagnostic.jump({
+							count = 1,
+							severity = { min = vim.diagnostic.severity.HINT },
+							float = true,
+						})
 					end, o)
 					vim.keymap.set("n", "<leader>dS", function()
-						vim.diagnostic.jump({ count = -1, severity = { min = vim.diagnostic.severity.HINT }, float = true })
+						vim.diagnostic.jump({
+							count = -1,
+							severity = { min = vim.diagnostic.severity.HINT },
+							float = true,
+						})
 					end, o)
 					vim.keymap.set("n", "<leader>dS", function()
 						vim.diagnostic.jump({ count = -1, severity = { min = vim.diagnostic.severity.WARN } })

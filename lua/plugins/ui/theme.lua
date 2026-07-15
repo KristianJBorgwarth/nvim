@@ -127,6 +127,15 @@ return {
 					"DashboardKey",
 					"DashboardIcon",
 				},
+        exclude_groups = {
+          "Normal",
+          "NormalNC",
+          "CursorLine",
+          "CursorLineNr",
+          "CursorColumn",
+          "ColorColumn",
+          "VertSplit",
+        },
 			})
 			vim.opt.fillchars:append({ eob = " " })
 

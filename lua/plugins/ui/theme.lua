@@ -1,166 +1,177 @@
 return {
-  {
-    "ellisonleao/gruvbox.nvim",
-    lazy = false,
-    priority = 1000,
-  },
-  {
-    "nyoom-engineering/oxocarbon.nvim",
-    lazy = false,
-    priority = 1000,
-  },
-  {
-    "rebelot/kanagawa.nvim",
-    lazy = false,
-  },
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-  },
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    lazy = false,
-    priority = 1000,
-  },
-  {
-    "shaunsingh/nord.nvim",
-    lazy = false,
-    priority = 1000,
-  },
-  {
-    "rose-pine/neovim",
-    name = "rose-pine",
-    lazy = false,
-  },
-  {
-    "olivercederborg/poimandres.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("poimandres").setup({
-        disable_italics = false,
-      })
+	{
+		"ellisonleao/gruvbox.nvim",
+		lazy = false,
+		priority = 1000,
+	},
+	{
+		"nyoom-engineering/oxocarbon.nvim",
+		lazy = false,
+		priority = 1000,
+	},
+	{
+		"rebelot/kanagawa.nvim",
+		lazy = false,
+	},
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+	},
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		lazy = false,
+		priority = 1000,
+	},
+	{
+		"shaunsingh/nord.nvim",
+		lazy = false,
+		priority = 1000,
+	},
+	{
+		"rose-pine/neovim",
+		name = "rose-pine",
+		lazy = false,
+	},
+	{
+		"kdheepak/monochrome.nvim",
+		name = "monochrome",
+		lazy = false,
+	},
+	{
+		"olivercederborg/poimandres.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("poimandres").setup({
+				disable_italics = false,
+			})
 
-      vim.cmd("colorscheme poimandres")
-    end,
-  },
-  {
-    "dgox16/oldworld.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("oldworld").setup({
-        variant = "default",
-        integrations = {
-          telescope = true,
-          gitsigns = true,
-          cmp = true,
-          treesitter = true,
-        },
-      })
+			vim.cmd("colorscheme poimandres")
+		end,
+	},
+	{
+		"dgox16/oldworld.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("oldworld").setup({
+				variant = "default",
+				integrations = {
+					telescope = true,
+					gitsigns = true,
+					cmp = true,
+					treesitter = true,
+				},
+			})
 
-      vim.api.nvim_create_autocmd("ColorScheme", {
-        pattern = "oldworld",
-        callback = function()
-          local border = "#c0bfbc"
-          vim.api.nvim_set_hl(0, "MatchParen",             { underline = true })
-          vim.api.nvim_set_hl(0, "TelescopeBorder",        { fg = border })
-          vim.api.nvim_set_hl(0, "TelescopePromptBorder",  { fg = border })
-          vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { fg = border })
-          vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { fg = border })
-          vim.api.nvim_set_hl(0, "WinSeparator",           { fg = border })
-          vim.api.nvim_set_hl(0, "FloatBorder",            { fg = border })
-        end,
-      })
-    end,
-  },
-  {
-    "xiyaowong/transparent.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("transparent").setup({
-        enable = true,
+			vim.api.nvim_create_autocmd("ColorScheme", {
+				pattern = "oldworld",
+				callback = function()
+					local border = "#c0bfbc"
+					vim.api.nvim_set_hl(0, "MatchParen", { underline = true })
+					vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = border })
+					vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = border })
+					vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { fg = border })
+					vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { fg = border })
+					vim.api.nvim_set_hl(0, "WinSeparator", { fg = border })
+					vim.api.nvim_set_hl(0, "FloatBorder", { fg = border })
+				end,
+			})
+		end,
+	},
+	{
+		"xiyaowong/transparent.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("transparent").setup({
+				enable = true,
 
-        extra_groups = {
-          "NormalFloat",
-          "FloatBorder",
-          "SignColumn",
-          "EndOfBuffer",
-          "MsgArea",
+				extra_groups = {
+					"NormalFloat",
+					"FloatBorder",
+					"SignColumn",
+					"EndOfBuffer",
+					"MsgArea",
 
-          "TelescopeNormal",
-          "TelescopeBorder",
-          "TelescopePromptNormal",
-          "TelescopeResultsNormal",
-          "TelescopePreviewNormal",
+					"TelescopeNormal",
+					"TelescopeBorder",
+					"TelescopePromptNormal",
+					"TelescopeResultsNormal",
+					"TelescopePreviewNormal",
 
-          "Pmenu",
-          "PmenuSel",
+					"Pmenu",
+					"PmenuSel",
 
-          "TroubleNormal",
-          "TroubleNormalNC",
+					"TroubleNormal",
+					"TroubleNormalNC",
 
-          "NeoTreeNormal",
-          "NeoTreeNormalNC",
-          "NeoTreeEndOfBuffer",
-          "NeoTreeWinSeparator",
-        },
-      })
-      vim.opt.fillchars:append({ eob = " " })
+					"NeoTreeNormal",
+					"NeoTreeNormalNC",
+					"NeoTreeEndOfBuffer",
+					"NeoTreeWinSeparator",
+				},
+			})
+			vim.opt.fillchars:append({ eob = " " })
 
-      local md_hl_groups = {
-        "@markup.strong", "@markup.italic",
-        "@markup.strong.markdown_inline", "@markup.italic.markdown_inline",
-        "markdownBold", "markdownItalic", "markdownBoldItalic",
-      }
+			local md_hl_groups = {
+				"@markup.strong",
+				"@markup.italic",
+				"@markup.strong.markdown_inline",
+				"@markup.italic.markdown_inline",
+				"markdownBold",
+				"markdownItalic",
+				"markdownBoldItalic",
+			}
 
-      local function strip_bold_italic()
-        local saved = {}
-        for _, name in ipairs(md_hl_groups) do
-          local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = name, link = false })
-          if ok then saved[name] = hl end
-        end
+			local function strip_bold_italic()
+				local saved = {}
+				for _, name in ipairs(md_hl_groups) do
+					local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = name, link = false })
+					if ok then
+						saved[name] = hl
+					end
+				end
 
-        for _, hl_name in ipairs(vim.fn.getcompletion("", "highlight")) do
-          local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = hl_name, link = false })
-          if ok and (hl.bold or hl.italic) then
-            hl.bold = nil
-            hl.italic = nil
-            pcall(vim.api.nvim_set_hl, 0, hl_name, hl)
-          end
-        end
+				for _, hl_name in ipairs(vim.fn.getcompletion("", "highlight")) do
+					local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = hl_name, link = false })
+					if ok and (hl.bold or hl.italic) then
+						hl.bold = nil
+						hl.italic = nil
+						pcall(vim.api.nvim_set_hl, 0, hl_name, hl)
+					end
+				end
 
-        for name, hl in pairs(saved) do
-          pcall(vim.api.nvim_set_hl, 0, name, hl)
-        end
-      end
+				for name, hl in pairs(saved) do
+					pcall(vim.api.nvim_set_hl, 0, name, hl)
+				end
+			end
 
-      vim.api.nvim_create_autocmd("ColorScheme", {
-        callback = function()
-          vim.cmd("TransparentEnable")
-          strip_bold_italic()
-        end,
-      })
-      strip_bold_italic()
-    end,
-  },
-  {
-    "zaldih/themery.nvim",
-    config = function()
-      require("themery").setup({
-        livePreview = true,
-        themes = {
-          {
-            name = "poimandres",
-            colorscheme = "poimandres",
-          },
-          {
-            name = "catppuccin-mocha",
-            colorscheme = "catppuccin",
-            before = [[
+			vim.api.nvim_create_autocmd("ColorScheme", {
+				callback = function()
+					vim.cmd("TransparentEnable")
+					strip_bold_italic()
+				end,
+			})
+			strip_bold_italic()
+		end,
+	},
+	{
+		"zaldih/themery.nvim",
+		config = function()
+			require("themery").setup({
+				livePreview = true,
+				themes = {
+					{
+						name = "poimandres",
+						colorscheme = "poimandres",
+					},
+					{
+						name = "catppuccin-mocha",
+						colorscheme = "catppuccin",
+						before = [[
               require("catppuccin").setup({
                 flavour = "mocha",
                 term_colors = true,
@@ -169,101 +180,101 @@ return {
                   telescope = true,
                 },
               })
-            ]]
-          },
-          {
-            name = "oldworld",
-            colorscheme = "oldworld",
-          },
-          {
-            name = "catppuccin-macchiato",
-            colorscheme = "catppuccin",
-            before = [[
+            ]],
+					},
+					{
+						name = "oldworld",
+						colorscheme = "oldworld",
+					},
+					{
+						name = "catppuccin-macchiato",
+						colorscheme = "catppuccin",
+						before = [[
               require("catppuccin").setup({
                 flavour = "macchiato",
               })
-            ]]
-          },
-          {
-            name = "catppuccin-frappe",
-            colorscheme = "catppuccin",
-            before = [[
+            ]],
+					},
+					{
+						name = "catppuccin-frappe",
+						colorscheme = "catppuccin",
+						before = [[
               require("catppuccin").setup({
                 flavour = "frappe",
               })
-            ]]
-          },
-          {
-            name = "tokyonight-night",
-            colorscheme = "tokyonight",
-            before = [[
+            ]],
+					},
+					{
+						name = "tokyonight-night",
+						colorscheme = "tokyonight",
+						before = [[
               require("tokyonight").setup({
                 style = "night",
               })
-            ]]
-          },
-          {
-            name = "tokyonight-storm",
-            colorscheme = "tokyonight",
-            before = [[
+            ]],
+					},
+					{
+						name = "tokyonight-storm",
+						colorscheme = "tokyonight",
+						before = [[
               require("tokyonight").setup({
                 style = "storm",
               })
-            ]]
-          },
-          {
-            name = "tokyonight-moon",
-            colorscheme = "tokyonight",
-            before = [[
+            ]],
+					},
+					{
+						name = "tokyonight-moon",
+						colorscheme = "tokyonight",
+						before = [[
               require("tokyonight").setup({
                 style = "moon",
               })
-            ]]
-          },
-          {
-            name = "kanagawa-wave",
-            colorscheme = "kanagawa",
-            before = [[
+            ]],
+					},
+					{
+						name = "kanagawa-wave",
+						colorscheme = "kanagawa",
+						before = [[
               require("kanagawa").setup({
                 theme = "wave",
               })
-            ]]
-          },
-          {
-            name = "kanagawa-dragon",
-            colorscheme = "kanagawa",
-            before = [[
+            ]],
+					},
+					{
+						name = "kanagawa-dragon",
+						colorscheme = "kanagawa",
+						before = [[
               require("kanagawa").setup({
                 theme = "dragon",
               })
-            ]]
-          },
-          {
-            name = "gruvbox-dark",
-            colorscheme = "gruvbox",
-            before = [[
+            ]],
+					},
+					{
+						name = "gruvbox-dark",
+						colorscheme = "gruvbox",
+						before = [[
               require("gruvbox").setup({
                 contrast = "hard",
               })
               transparent_mode = true
-            ]]
-          },
-          {
-            name = "rose-pine",
-            colorscheme = "rose-pine",
-            before = [[
+            ]],
+					},
+					{
+						name = "rose-pine",
+						colorscheme = "rose-pine",
+						before = [[
               require("rose-pine").setup({
                 variant = "main",
                 styles = {
                   italic = false,
                 },
               })
-            ]]
-          },
-          {
-            name = "rose-pine-moon",
-            colorscheme = "rose-pine",
-            before = [[
+            ]],
+					},
+					{
+						name = "rose-pine-moon",
+						colorscheme = "rose-pine",
+						before = [[
               require("rose-pine").setup({
                 variant = "moon",
                 styles = {
@@ -271,18 +282,22 @@ return {
                   bold = false,
                 }
               })
-            ]]
-          },
-          {
-            name = "nord",
-            colorscheme = "nord",
-          },
-          {
-            name = "oxocarbon",
-            colorscheme = "oxocarbon"
-          }
-        },
-      })
-    end,
-  },
+            ]],
+					},
+					{
+						name = "monochrome",
+						colorscheme = "monochrome",
+					},
+					{
+						name = "nord",
+						colorscheme = "nord",
+					},
+					{
+						name = "oxocarbon",
+						colorscheme = "oxocarbon",
+					},
+				},
+			})
+		end,
+	},
 }

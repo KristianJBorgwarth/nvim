@@ -1,6 +1,6 @@
 return {
 	{
-    dir = "~/projects/dendrite/dendrite.nvim",
+    "KristianJBorgwarth/dendrite.nvim",
 		dependencies = {
 			"hrsh7th/nvim-cmp",
 		},

@@ -88,13 +88,19 @@ return {
 		config = function()
 			require("transparent").setup({
 				enable = true,
-
 				extra_groups = {
 					"NormalFloat",
 					"FloatBorder",
 					"SignColumn",
 					"EndOfBuffer",
 					"MsgArea",
+					"WinBar",
+					"WinBarNC",
+					"StatusLine",
+					"StatusLineNC",
+					"TabLine",
+					"TabLineFill",
+					"TabLineSel",
 
 					"TelescopeNormal",
 					"TelescopeBorder",
@@ -112,6 +118,14 @@ return {
 					"NeoTreeNormalNC",
 					"NeoTreeEndOfBuffer",
 					"NeoTreeWinSeparator",
+
+					"DashboardHeader",
+					"DashboardCenter",
+					"DashboardShortCut",
+					"DashboardFooter",
+					"DashboardDesc",
+					"DashboardKey",
+					"DashboardIcon",
 				},
 			})
 			vim.opt.fillchars:append({ eob = " " })

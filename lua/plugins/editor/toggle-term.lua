@@ -50,8 +50,8 @@ return {
 
 		map("n", "<leader>r", function()
 			vim.cmd("silent! wa")
-			run("make restore")
-		end, { desc = "make restore" })
+			run("make run")
+		end, { desc = "make run" })
 
 		map("n", "<leader>ll", function()
 			lazygit:toggle()

@@ -63,13 +63,13 @@ return {
 						action = "Telescope find_files",
 					},
 					{
-						icon = "  ",
+						icon = "✍︎  ",
 						desc = "Recent files",
 						key = "r",
 						action = "lua require('telescope.builtin').oldfiles({only_cwd = true})",
 					},
 					{
-						icon = "  ",
+						icon = "✘  ",
 						desc = "Quit",
 						key = "q",
 						action = "qa",

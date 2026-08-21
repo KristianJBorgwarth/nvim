@@ -15,11 +15,11 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    branch = "master",
+    branch = "main",
     build = ":TSUpdate",
     lazy = false,
-    opts = {
-      ensure_installed = {
+    config = function()
+      require("nvim-treesitter").install({
         "lua",
         "javascript",
         "typescript",
@@ -28,12 +28,14 @@ return {
         "markdown",
         "markdown_inline",
         "go",
-      },
-      highlight = { enable = true },
-      indent = { enable = false },
-    },
-    config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
+      })
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "lua", "javascript", "typescript", "python", "cs", "markdown", "go" },
+        callback = function()
+          pcall(vim.treesitter.start)
+        end,
+      })
     end,
   },
 }

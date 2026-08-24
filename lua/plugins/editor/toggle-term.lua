@@ -5,9 +5,8 @@ return {
 	opts = {
 		size = 20,
 		open_mapping = [[<C-M-1>]],
-		direction = "float",
+		direction = "horizontal",
 		shade_terminals = false,
-		float_opts = { border = "rounded" },
 		close_on_exit = true,
 	},
 
@@ -20,9 +19,8 @@ return {
 		local function run(cmd)
 			Terminal:new({
 				cmd = cmd,
-				direction = "float",
+				direction = "horizontal",
 				close_on_exit = false,
-				float_opts = { border = "rounded" },
 			}):open()
 		end
 
@@ -30,7 +28,6 @@ return {
 			cmd = "lazygit",
 			direction = "float",
 			close_on_exit = true,
-			float_opts = { border = "rounded" },
 		})
 
 		map("n", "<leader>b", function()

@@ -19,11 +19,11 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = { "neovim/nvim-lspconfig", "williamboman/mason.nvim" },
 		opts = {
-			ensure_installed = { "lua_ls", "ts_ls", "bashls", "gopls", "clangd" },
+			ensure_installed = { "lua_ls", "ts_ls", "bashls", "gopls", "clangd", "qmlls" },
 		},
 		config = function(_, opts)
 			require("mason-lspconfig").setup(opts)
-			vim.lsp.enable({ "lua_ls", "ts_ls", "bashls", "gopls" })
+			vim.lsp.enable({ "lua_ls", "ts_ls", "bashls", "gopls", "qmlls" })
 			local border = "rounded"
 			vim.diagnostic.config({
 				float = { border = border },

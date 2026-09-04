@@ -18,6 +18,11 @@ require("config.options")
 require("config.autocmds")
 require("config.keymaps")
 
+if vim.g.vscode then
+  require("config.vscode")
+  return
+end
+
 require("lazy").setup({
   ui = {
     border = "rounded"

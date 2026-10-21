@@ -2,7 +2,10 @@ return {
   "rcarriga/nvim-notify",
   opts = {
     top_down = false,
-    background_colour = "#161616",
+    -- notifications fade toward this, so it has to match the terminal background
+    background_colour = function()
+      return vim.o.background == "light" and "#f4f1ea" or "#141414"
+    end,
   },
   config = function(_, opts)
     local notify = require("notify")

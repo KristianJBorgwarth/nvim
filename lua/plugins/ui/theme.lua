@@ -69,7 +69,7 @@ return {
 			vim.api.nvim_create_autocmd("ColorScheme", {
 				pattern = "oldworld",
 				callback = function()
-					local border = "#c0bfbc"
+					local border = vim.o.background == "light" and "#7c766b" or "#c0bfbc"
 					vim.api.nvim_set_hl(0, "MatchParen", { underline = true })
 					vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = border })
 					vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = border })
@@ -161,11 +161,13 @@ return {
 					{
 						name = "poimandres",
 						colorscheme = "poimandres",
+						before = [[ vim.o.background = "dark" ]],
 					},
 					{
 						name = "catppuccin-mocha",
 						colorscheme = "catppuccin",
 						before = [[
+              vim.o.background = "dark"
               require("catppuccin").setup({
                 flavour = "mocha",
                 term_colors = true,
@@ -179,11 +181,13 @@ return {
 					{
 						name = "oldworld",
 						colorscheme = "oldworld",
+						before = [[ vim.o.background = "dark" ]],
 					},
 					{
 						name = "catppuccin-macchiato",
 						colorscheme = "catppuccin",
 						before = [[
+              vim.o.background = "dark"
               require("catppuccin").setup({
                 flavour = "macchiato",
               })
@@ -193,6 +197,7 @@ return {
 						name = "catppuccin-frappe",
 						colorscheme = "catppuccin",
 						before = [[
+              vim.o.background = "dark"
               require("catppuccin").setup({
                 flavour = "frappe",
               })
@@ -202,6 +207,7 @@ return {
 						name = "tokyonight-night",
 						colorscheme = "tokyonight",
 						before = [[
+              vim.o.background = "dark"
               require("tokyonight").setup({
                 style = "night",
               })
@@ -211,6 +217,7 @@ return {
 						name = "tokyonight-storm",
 						colorscheme = "tokyonight",
 						before = [[
+              vim.o.background = "dark"
               require("tokyonight").setup({
                 style = "storm",
               })
@@ -220,6 +227,7 @@ return {
 						name = "tokyonight-moon",
 						colorscheme = "tokyonight",
 						before = [[
+              vim.o.background = "dark"
               require("tokyonight").setup({
                 style = "moon",
               })
@@ -229,6 +237,7 @@ return {
 						name = "kanagawa-wave",
 						colorscheme = "kanagawa",
 						before = [[
+              vim.o.background = "dark"
               require("kanagawa").setup({
                 theme = "wave",
               })
@@ -238,6 +247,7 @@ return {
 						name = "kanagawa-dragon",
 						colorscheme = "kanagawa",
 						before = [[
+              vim.o.background = "dark"
               require("kanagawa").setup({
                 theme = "dragon",
               })
@@ -247,6 +257,7 @@ return {
 						name = "gruvbox-dark",
 						colorscheme = "gruvbox",
 						before = [[
+              vim.o.background = "dark"
               require("gruvbox").setup({
                 contrast = "hard",
               })
@@ -257,6 +268,7 @@ return {
 						name = "rose-pine",
 						colorscheme = "rose-pine",
 						before = [[
+              vim.o.background = "dark"
               require("rose-pine").setup({
                 variant = "main",
                 styles = {
@@ -269,6 +281,7 @@ return {
 						name = "rose-pine-moon",
 						colorscheme = "rose-pine",
 						before = [[
+              vim.o.background = "dark"
               require("rose-pine").setup({
                 variant = "moon",
                 styles = {
@@ -281,14 +294,80 @@ return {
 					{
 						name = "monochrome",
 						colorscheme = "monochrome",
+						before = [[ vim.o.background = "dark" ]],
 					},
 					{
 						name = "nord",
 						colorscheme = "nord",
+						before = [[ vim.o.background = "dark" ]],
 					},
 					{
 						name = "oxocarbon",
 						colorscheme = "oxocarbon",
+						before = [[ vim.o.background = "dark" ]],
+					},
+					{
+						name = "catppuccin-latte",
+						colorscheme = "catppuccin",
+						before = [[
+              vim.o.background = "light"
+              require("catppuccin").setup({
+                flavour = "latte",
+                term_colors = true,
+                integrations = {
+                  treesitter = true,
+                  telescope = true,
+                },
+              })
+            ]],
+					},
+					{
+						name = "tokyonight-day",
+						colorscheme = "tokyonight",
+						before = [[
+              vim.o.background = "light"
+              require("tokyonight").setup({
+                style = "day",
+              })
+            ]],
+					},
+					{
+						name = "kanagawa-lotus",
+						colorscheme = "kanagawa",
+						before = [[
+              vim.o.background = "light"
+              require("kanagawa").setup({
+                theme = "lotus",
+              })
+            ]],
+					},
+					{
+						name = "gruvbox-light",
+						colorscheme = "gruvbox",
+						before = [[
+              vim.o.background = "light"
+              require("gruvbox").setup({
+                contrast = "hard",
+              })
+            ]],
+					},
+					{
+						name = "rose-pine-dawn",
+						colorscheme = "rose-pine",
+						before = [[
+              vim.o.background = "light"
+              require("rose-pine").setup({
+                variant = "dawn",
+                styles = {
+                  italic = false,
+                },
+              })
+            ]],
+					},
+					{
+						name = "oxocarbon-light",
+						colorscheme = "oxocarbon",
+						before = [[ vim.o.background = "light" ]],
 					},
 				},
 			})

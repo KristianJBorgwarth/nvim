@@ -29,6 +29,21 @@ return {
 					end, "Git blame (float)")
 
 					map("n", "<leader>gR", gs.reset_buffer, "Git reset buffer")
+
+					-- the changes in place, in the context of the whole file: tinted lines,
+					-- the changed words, and removed lines shown where they were
+					map("n", "<leader>gd", function()
+						local on = gs.toggle_linehl()
+						gs.toggle_word_diff(on)
+						gs.toggle_deleted(on)
+					end, "Git toggle inline diff")
+
+					map("n", "]h", function()
+						gs.nav_hunk("next")
+					end, "Next git hunk")
+					map("n", "[h", function()
+						gs.nav_hunk("prev")
+					end, "Previous git hunk")
 				end,
 			})
 		end,

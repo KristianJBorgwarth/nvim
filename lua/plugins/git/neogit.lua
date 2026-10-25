@@ -30,8 +30,6 @@ return {
 
 					map("n", "<leader>gR", gs.reset_buffer, "Git reset buffer")
 
-					-- the changes in place, in the context of the whole file: tinted lines,
-					-- the changed words, and removed lines shown where they were
 					map("n", "<leader>gd", function()
 						local on = gs.toggle_linehl()
 						gs.toggle_word_diff(on)
